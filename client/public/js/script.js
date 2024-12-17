@@ -10,7 +10,7 @@ const localStorageData = await (async () => {
     data = JSON.parse(data);
   }
 
-  return data;
+  return data.body;
 })();
 
 console.log(localStorageData);

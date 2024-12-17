@@ -7,6 +7,8 @@ const API_KEY = process.env.API_KEY;
 
 function getMovies(callback) {
   const url = `https://api.themoviedb.org/3/trending/movie/week?language=en-US`;
+
+  // API options
   const options = {
     url,
     method: "GET",
@@ -32,13 +34,23 @@ function getMovies(callback) {
 }
 
 function getMovie(movieSearch, callback) {
-  const url = `https://api.themoviedb.org/3/${API_KEY}/search/movie?query=${encodeURIComponent(
+  const url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
     movieSearch
-  )}&include_adult=false&language=en-US&page=1`;
-  console.log(url);
+  )}&include_adult=true&language=en-US&page=1`;
+
+  // API options
+  const options = {
+    url,
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${API_KEY}`,
+    },
+    json: true,
+  };
 
   //   Calling the API
-  request({ url, json: true }, (error, response) => {
+  request(options, (error, response) => {
     // Handle errors
     if (error) {
       callback("Unable to connect to location services!", undefined);
