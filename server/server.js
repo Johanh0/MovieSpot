@@ -7,11 +7,13 @@ const app = express();
 // PORT
 const PORT = process.env.PORT || 3000;
 
-// Path directory
-const publicDirectoryPath = path.join(__dirname, "../public");
+// Path static client directory
+app.use(express.static(path.join(__dirname, "../client/public")));
 
-// Setup static directory to serve
-app.use(express.static(publicDirectoryPath));
+// Main page
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/public", "html/index.html"));
+});
 
 // Routers
 const apiRouter = require("./routes/api");
