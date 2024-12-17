@@ -9,6 +9,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "chalk": "^2.4.2"
   }
 }
