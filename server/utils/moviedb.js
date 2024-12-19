@@ -49,11 +49,38 @@ function getMovie(movieSearch, callback) {
     json: true,
   };
 
-  //   Calling the API
+  // Calling the API
   request(options, (error, response) => {
     // Handle errors
     if (error) {
-      callback("Unable to connect to location services!", undefined);
+      callback("Unable to connect to services!", undefined);
+    } else if (response.statusCode !== 200) {
+      callback("Something went wrong!", undefined);
+    } else {
+      // Sending the information
+      callback(undefined, response);
+    }
+  });
+}
+
+function getVideo(movieID, callback) {
+  const url = `https://api.themoviedb.org/3/movie/${movieID}/videos?language=en-US`;
+  // API options
+  const options = {
+    url,
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${API_KEY}`,
+    },
+    json: true,
+  };
+
+  // Calling the API
+  request(options, (error, response) => {
+    // Handle errors
+    if (error) {
+      callback("Unable to connect to services!", undefined);
     } else if (response.statusCode !== 200) {
       callback("Something went wrong!", undefined);
     } else {
@@ -66,4 +93,5 @@ function getMovie(movieSearch, callback) {
 module.exports = {
   getMovies,
   getMovie,
+  getVideo,
 };

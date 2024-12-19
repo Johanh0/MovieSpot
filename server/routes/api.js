@@ -31,4 +31,22 @@ router.get("/movie", (req, res) => {
   });
 });
 
+router.get("/movie/video", (req, res) => {
+  if (!req.query.movie_id) {
+    res.send({
+      error: "You must provide a movie name",
+    });
+    return;
+  }
+
+  moviedb.getVideo(req.query.movie_id, (error, data) => {
+    if (error) {
+      res.send({ error });
+      return;
+    }
+
+    res.send(data);
+  });
+});
+
 module.exports = router;

@@ -26,5 +26,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(chalk.inverse.green(` Server is running in ${PORT} `));
+  console.log(chalk.inverse.green(` Server is running on ${PORT} `));
 });
