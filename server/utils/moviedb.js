@@ -90,8 +90,36 @@ function getVideo(movieID, callback) {
   });
 }
 
+function getGenres(callback) {
+  const url = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
+  // API options
+  const options = {
+    url,
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${API_KEY}`,
+    },
+    json: true,
+  };
+
+  // Calling the API
+  request(options, (error, response) => {
+    // Handle errors
+    if (error) {
+      callback("Unable to connect to services!", undefined);
+    } else if (response.statusCode !== 200) {
+      callback("Something went wrong!", undefined);
+    } else {
+      // Sending the information
+      callback(undefined, response);
+    }
+  });
+}
+
 module.exports = {
   getMovies,
   getMovie,
   getVideo,
+  getGenres,
 };
