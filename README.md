@@ -26,7 +26,7 @@ MovieSpot is a web application that allows users to search for movies. By enteri
 
 ## 🚀 Deployment
 
-To deploy this project, [click here.](https://johanh0.github.io/MovieSpot/)
+To deploy this project, [click here.](https://moviespot-mseu.onrender.com/)
 
 &nbsp;
 
