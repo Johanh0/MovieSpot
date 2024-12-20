@@ -4,6 +4,7 @@ const searchInput = document.querySelector("#search__input");
 const searchContainer = document.querySelector(".search--container ");
 const trendingVideoElement = document.querySelector(".trending__video");
 const trendingListElement = document.querySelector(".trending__list");
+const domain = window.location.hostname;
 
 async function getMovies() {
   try {
@@ -25,7 +26,7 @@ async function getMovies() {
 
 async function getMovie(movieSearch) {
   try {
-    const response = await fetch(`api//movie?search=${movieSearch}`);
+    const response = await fetch(`/api/movie?search=${movieSearch}`);
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
@@ -49,17 +50,17 @@ async function getVideo(movieID) {
   } catch (error) {}
 }
 
-async function getGenres() {
-  try {
-    const response = await fetch(`/api/movies/genres`);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
+// async function getGenres() {
+//   try {
+//     const response = await fetch(`/api/movies/genres`);
+//     if (!response.ok) {
+//       throw new Error(`Response status: ${response.status}`);
+//     }
 
-    const data = await response.json();
-    return data.body;
-  } catch (error) {}
-}
+//     const data = await response.json();
+//     return data.body;
+//   } catch (error) {}
+// }
 
 // Generate the first trending movies on the page as soon the DOM content loaded
 document.addEventListener("DOMContentLoaded", async () => {
@@ -103,8 +104,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         <p class="description">${randomMovie.overview}</p>
     </div>
   `;
-
-  movieModal();
 });
 
 formElement.addEventListener("submit", async (event) => {
@@ -142,14 +141,4 @@ formElement.addEventListener("submit", async (event) => {
     </div>
   `;
   });
-
-  movieModal();
 });
-
-function movieModal() {
-  const allTitles = document.querySelectorAll(".title");
-
-  allTitles.forEach((title) => {
-    title.addEventListener("click", () => {});
-  });
-}
