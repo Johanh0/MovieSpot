@@ -13,6 +13,16 @@ router.get("/movies", (req, res) => {
   });
 });
 
+router.get("/movies/genres", (req, res) => {
+  moviedb.getGenres((error, data) => {
+    if (error) {
+      res.send({ error });
+      return;
+    }
+    res.send(data);
+  });
+});
+
 router.get("/movie", (req, res) => {
   if (!req.query.search) {
     res.send({

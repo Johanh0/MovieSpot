@@ -40,11 +40,11 @@ body {
   font-size: var(--text-md);
 }
 
-body :where(header, main, footer) {
+body :where(main, footer) {
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
-  padding: 50px;
+  padding: 10px;
 }
 
 a {
@@ -53,17 +53,10 @@ a {
   cursor: pointer;
 }
 
-header .nav {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 20px;
-}
-
 .search {
   display: flex;
   flex-direction: column;
-  height: 700px;
+  height: 600px;
   gap: 25px;
   padding: 24px;
   border-radius: var(--border-radius-md);
@@ -228,7 +221,27 @@ header .nav {
   color: var(--gray-color);
 }
 
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--text-sm);
+
+  & p,
+  a {
+    color: var(--gray-color);
+  }
+
+  & a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+}
+
 @media (min-width: 995px) {
+  body :where(header, main, footer) {
+    padding: 50px;
+  }
   .trending--container {
     flex-direction: row;
   }

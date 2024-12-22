@@ -22,7 +22,7 @@ app.use("/api", apiRouter);
 
 // 404 Page
 app.get("*", (req, res) => {
-  res.send("<h1>404 Page</h1>");
+  res.sendFile(path.join(__dirname, "../client/public", "html/404.html"));
 });
 
 app.listen(PORT, () => {
