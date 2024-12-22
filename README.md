@@ -38,9 +38,9 @@ To deploy this project, [click here.](https://moviespot-mseu.onrender.com/)
 
 &nbsp;
 
-## 📸 Screen Shots
+## 📸 Screen Shot
 
-![](./assets/screen1.png)
+![](./assets/screen.png)
 
 &nbsp;
 
